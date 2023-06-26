@@ -127,6 +127,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+qgenv/
 
 # Spyder project settings
 .spyderproject
