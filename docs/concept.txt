@@ -1,0 +1,7 @@
+# wh_part                        aux_part           sub_part    verb_part          rest_of_it
+# Wh Question Word/Phrase +     Auxiliary Verb   +   Subject +  Main Verb +   Object or Other Information?
+# why                            do                  you         like            books very much?
+# because:{'why'}                I:{do}              'subj'      'verb'        from 'obj' upto 'because'
+# keyword                        keyword            variable     variable      formatted string
+# predefined dict              predefined dict      spacy        spacy        string formatting/function with regex
+# program to check          dict choose&1ST aux     1st subj     1st vrb       from vrb

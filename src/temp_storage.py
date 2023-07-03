@@ -10,3 +10,5 @@ qtype = {'because': ['Why'], 'since': ['When', 'Why'], 'when': ['When'], 'althou
 
 
 aux_dict= {'i':['do'],'we':['do'],'you':['do'],'they':['do'],'he':['does'],'she':['does'],'it':['does']}
+
+sent_split= {'because':0}
