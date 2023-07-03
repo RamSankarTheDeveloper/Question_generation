@@ -8,7 +8,8 @@ from temp_storage import *
 class question:
  
  def __init__(self):
-   self.tokens= prep().tokens
+   self.prep_def= prep()
+   self.tokens= self.prep_def.tokens
 
  def wh_part(self):
    self.wh_word= qtype[
@@ -20,6 +21,11 @@ class question:
                      ]  
    print("wh_word= ", self.wh_word[0])
 
+ def subj_verb(self):
+   self.subj= self.prep_def.svo_selecter("nsubj")
+   self.verb= self.prep_def.svo_selecter("ROOT")
+   print("subj, verb= ",self.subj, self.verb)
+
 
 
 #  def aux_part(self):
@@ -30,3 +36,4 @@ class question:
 
 
 question().wh_part()
+question().subj_verb()
