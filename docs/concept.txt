@@ -4,4 +4,4 @@
 # because:{'why'}                I:{do}              'subj'      'verb'        from 'obj' upto 'because'
 # keyword                        keyword            variable     variable      formatted string
 # predefined dict              predefined dict      spacy        spacy        string formatting/function with regex
-# program to check          dict choose&1ST aux     1st subj     1st vrb       from vrb
+# program to check           dict choose&1ST aux     1st subj     1st vrb       from vrb
