@@ -1,42 +1,36 @@
-"""QG"""
+"""QG, main"""
 
-"modules"
+import temp_storage
 from preprocessor import prep
-from temp_storage import *
 
 
 class question:
- 
- def __init__(self):
-   self.prep_def= prep()
-   self.tokens= self.prep_def.tokens
-   self.base_word= list(
-                     set(
-                        qtype.keys()
-                        ).intersection(self.tokens)
-                     )[0]
 
- def wh_part(self):
-   self.wh_word= qtype[self.base_word]  
-   #print("wh_word= ", self.wh_word[0])
-   return(self.wh_word[0])
+    def __init__(self):
+        self.tokens = prep().tokens
+        self.trigger_word = list(
+            set(
+                temp_storage.trigger_words_dict.keys()
+            ).intersection(self.tokens)
+        )[0]
 
- def subj_verb_aux(self):
-   self.subj= self.prep_def.svo_selecter("nsubj")
-   self.verb= self.prep_def.svo_selecter("ROOT")
-   self.aux= self.aux_part(self.subj.text.lower() )
-   #print("subj, verb, aux= ",self.subj,',', self.verb,',', self.aux[0])
-   return self.aux
+    def wh_part(self):
+        self.wh_word = temp_storage.trigger_words_dict[self.trigger_word]
+        return (self.wh_word[0])
 
- def aux_part(self, keyword):
-   if keyword in list(aux_dict.keys()):
-     return aux_dict[keyword]
-   #add nouns, including names
+    def subj_verb_aux(self):
+        self.main_subj = prep().dependency_parser("nsubj")
+        self.main_verb = prep().dependency_parser("ROOT")
+        # aux part have problem by calling before definition?
+        self.aux = prep().aux_part(self.main_subj.text.lower())
+        return self.aux
 
- def rest_of_que(self):
-   self.splitted_sent= self.prep_def.sent_split(self.base_word)
-   #print(splitted_sent)
-   return(self.splitted_sent)
+    def rest_of_question_parts(self):
+        self.splitted_sent = prep().sent_split(self.trigger_word)
+        return (self.splitted_sent)
+ #   def generate_question(self):
+
 
 if __name__ == '__main__':
-    print(question().wh_part(),question().subj_verb_aux()[0], question().rest_of_que(),"?")
+    print(question().wh_part(), question().subj_verb_aux()
+          [0], question().rest_of_question_parts(), "?")
