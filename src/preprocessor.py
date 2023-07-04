@@ -19,6 +19,11 @@ class prep():
     def dependency_parser(self, keyword):
         self.deps = [tok for tok in self.doc if tok.dep_ == keyword]
         return (self.deps[0])  # simplify
+    
+    def nounphrase(self, subj_word):
+        for chunk in self.doc.noun_chunks:
+          if (subj_word in chunk.text):
+            return chunk.text
 
     def aux_part(self, keyword):
         if keyword in list(temp_storage.aux_dict.keys()):

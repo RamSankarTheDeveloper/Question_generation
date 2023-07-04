@@ -20,9 +20,11 @@ class question:
 
     def subj_verb_aux(self):
         self.main_subj = prep().dependency_parser("nsubj")
+        self.main_noun_phrase_subj = prep().nounphrase(self.main_subj.text)
         self.main_verb = prep().dependency_parser("ROOT")
         # aux part have problem by calling before definition?
         self.aux = prep().aux_part(self.main_subj.text.lower())
+        #print(self.main_noun_phrase_subj)
         return self.aux
 
     def rest_of_question_parts(self):
