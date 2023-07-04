@@ -24,7 +24,6 @@ class question:
         self.main_verb = prep().dependency_parser("ROOT")
         # aux part have problem by calling before definition?
         self.aux = prep().aux_part(self.main_subj.text.lower())
-        #print(self.main_noun_phrase_subj)
         return self.aux
 
     def rest_of_question_parts(self):
