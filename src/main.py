@@ -1,4 +1,4 @@
-"""QG, main"""
+"""main"""
 
 import temp_storage
 from preprocessor import prep
@@ -28,7 +28,7 @@ class question:
     def rest_of_question_parts(self):
         self.splitted_sent = prep().sent_split(self.trigger_word)
         return (self.splitted_sent)
- #   def generate_question(self):
+   # def generate_question(self):
 
 
 if __name__ == '__main__':
