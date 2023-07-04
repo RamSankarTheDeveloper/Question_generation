@@ -29,9 +29,24 @@ class question:
     def rest_of_question_parts(self):
         self.splitted_sent = prep().sent_split(self.trigger_word)
         return (self.splitted_sent)
-   # def generate_question(self):
+    
+    def generate_question(self):
+        word_order= temp_storage.qg_order[self.trigger_word]
+        for i in word_order:
+            if (i== 'wh'):
+                print(self.wh_part())
+            elif (i=='aux'):
+                print(self.subj_verb_aux()[0])
+            elif (i == 'rest'):
+                print(self.rest_of_question_parts())
+            elif (i== 'trigger'):
+                print(self.trigger_word)
+            elif (i=='?'):
+                print('?')
 
 
 if __name__ == '__main__':
-    print(question().wh_part(), question().subj_verb_aux()
-          [0], question().rest_of_question_parts(), "?")
+    # print(question().wh_part(), question().subj_verb_aux()
+    #       [0], question().rest_of_question_parts(), "?")
+    question().generate_question()
+    
