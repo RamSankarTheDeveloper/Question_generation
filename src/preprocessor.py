@@ -1,10 +1,11 @@
 """Preprocessing actions, specifically tokenisation, parsing syntactic dependency, sentence split."""
 
-import temp_storage
+import from_nlp_db
 import spacy
 import nltk
 import nltk.corpus
 from nltk.tokenize import word_tokenize
+from spacy.tokens import token
 
 
 nlp = spacy.load("en_core_web_sm")
@@ -12,28 +13,34 @@ nlp = spacy.load("en_core_web_sm")
 
 class prep():
 
-    def __init__(self):
-        self.tokens = word_tokenize(temp_storage.text)
-        self.doc = nlp(temp_storage.text)
+    def __init__(self, line:str):
+        self.line=line
+        self.spacy_doc = nlp(self.line)
 
-    def dependency_parser(self, keyword):
-        self.deps = [tok for tok in self.doc if tok.dep_ == keyword]
+    def convert_line_to_tokens(self):
+        convert_line_to_tokens = word_tokenize(self.line)
+        return convert_line_to_tokens
+    
+    def dependency_parser(self, keyword:str)->token:
+        "nsubj, ROOT etc."
+        self.deps = [tok for tok in self.spacy_doc if tok.dep_ == keyword]
         return (self.deps[0])  # simplify
     
-    def nounphrase(self, subj_word):
-        for chunk in self.doc.noun_chunks:
-          if (subj_word in chunk.text):
+    def pick_chunk_containing_the_word(self, word:str)->str:
+        "noun phrase extracted via spacy chunk"
+        for chunk in self.spacy_doc.noun_chunks:
+          if (word in chunk.text):
             return chunk.text
 
     def aux_part(self, keyword):
-        if keyword in list(temp_storage.aux_dict.keys()):
-            return temp_storage.aux_dict[keyword]
+        if keyword in list(from_nlp_db.trigger_and_auxverb_pair.keys()):
+            return from_nlp_db.trigger_and_auxverb_pair[keyword]
 
-    def sent_split(self, base_word_pre):
-        self.splitted_sent = temp_storage.text.split(base_word_pre)
-        if temp_storage.sent_split[base_word_pre] == 0:
+    def trigger_and_sent_split_pair(self, base_word_pre):
+        self.splitted_sent = self.line.split(base_word_pre)
+        if from_nlp_db.trigger_and_sent_split_pair[base_word_pre] == 0:
             return (self.splitted_sent[0])
-        if temp_storage.sent_split[base_word_pre] == 1:
+        if from_nlp_db.trigger_and_sent_split_pair[base_word_pre] == 1:
             return (self.splitted_sent[1])
 
 
