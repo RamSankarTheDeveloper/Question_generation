@@ -1,6 +1,6 @@
 """extracts parts from a sentence"""
 
-import from_nlp_db
+import database.from_nlp_db as from_nlp_db
 from preprocessor import prep
 import utils
 

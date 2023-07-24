@@ -1,5 +1,5 @@
 """replaces objective items in question-structure-list with subjective items"""
-import extractor, from_nlp_db
+import extractor, database.from_nlp_db as from_nlp_db
 
 
 class replacer:

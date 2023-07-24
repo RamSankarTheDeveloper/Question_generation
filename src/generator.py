@@ -3,6 +3,7 @@ import replacer
 class generator():
 
     def output_values_from_dict(self):
+        
         replaced_parts_partedWith_question_structure = replacer.replacer(
         ).replaceeach_question_structure_items_from_objective_to_subjective()
 
@@ -12,7 +13,5 @@ class generator():
 
 
 if __name__ == '__main__':
-
-
 
     print( generator().output_values_from_dict() )

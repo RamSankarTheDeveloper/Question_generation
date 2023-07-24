@@ -1,6 +1,6 @@
 """Preprocessing actions, specifically tokenisation, parsing syntactic dependency, sentence split."""
 
-import from_nlp_db
+import database.from_nlp_db as from_nlp_db
 import spacy
 import nltk
 import nltk.corpus
