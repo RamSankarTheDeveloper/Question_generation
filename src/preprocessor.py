@@ -6,16 +6,23 @@ import nltk
 import nltk.corpus
 from nltk.tokenize import word_tokenize
 from spacy.tokens import token
-
-
 nlp = spacy.load("en_core_web_sm")
 
 
 class prep():
 
-    def __init__(self, line:str):
+    def __init__(self, line:str=""):
         self.line=line
         self.spacy_doc = nlp(self.line)
+
+        # split paragraph into sentences(sents)
+    def line_parser(self, paragraph: str):
+        nlp = spacy.load("en_core_web_sm")
+        about_doc = nlp(paragraph)
+        lines = list(
+            about_doc.sents
+        )  ##note: '.sents' have many inbuilt functions that can replace many of this programs's function obsolete.
+        return lines
 
     def convert_line_to_tokens(self):
         convert_line_to_tokens = word_tokenize(self.line)
@@ -42,6 +49,8 @@ class prep():
             return (self.splitted_sent[0])
         if from_nlp_db.trigger_and_sent_split_pair[base_word_pre] == 1:
             return (self.splitted_sent[1])
+        
+
 
 
 if __name__ == '__main__':

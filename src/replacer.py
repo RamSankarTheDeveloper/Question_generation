@@ -20,7 +20,7 @@ class replacer:
             elif (item == 'trigger'):
                 subjective_question_structure.update({'trigger': self.extractor_of_a_line.found_trigger_word})
             elif (item == '?'):
-                subjective_question_structure.update({'?': '? '})
+                subjective_question_structure.update({'?': '?'})
 
         return subjective_question_structure 
 
