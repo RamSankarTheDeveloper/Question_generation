@@ -1,6 +1,6 @@
 """replaces objective items in question-structure-list with subjective items"""
 import extractor, database.from_nlp_db as from_nlp_db
-
+from logger import logging
 
 class replacer:
     """replaces objective keywords in question_structure in db with subjective elements"""
@@ -19,8 +19,11 @@ class replacer:
                 subjective_question_structure.update({'rest': self.extractor_of_a_line.extract_rest_of_line_upto_trigger_word()})
             elif (item == 'trigger'):
                 subjective_question_structure.update({'trigger': self.extractor_of_a_line.found_trigger_word})
-            elif (item == '?'):
-                subjective_question_structure.update({'?': '?'})
+            # elif (item == '?'):
+            #     subjective_question_structure.update({'?': '?'})
+            else:
+                subjective_question_structure.update({item: item})
+        logging.info('replacer/replaceeach_question_structure_items_from_objective_to_subjective')
 
         return subjective_question_structure 
 
