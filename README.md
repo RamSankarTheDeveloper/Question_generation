@@ -1,13 +1,7 @@
-# Question_generation
-NLP project to generate questions from sentences.
 
-How to:
-Download the folder.Execute the 'requirements' file. Execute the 'main.py' file which is inside the 'src' folder. You can try different paragraphs by editing the items in 'database' folder.
 # Question Generator (Q-Gen)
 
 **Version:** 1.0
-
-![Question Generator Demo](link-to-demo-gif-or-image)
 
 ## Table of Contents
 - [Overview](#overview)
@@ -66,7 +60,7 @@ Edit or add the following variables to suit your needs from 'from_nlp_db.py'
   3.trigger_and_question_structure_pair
 
 ## License
-GPL
+This project is licensed under the MIT License
 
 ## Sample output
 Sample paragraph: 
